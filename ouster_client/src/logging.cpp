@@ -1,5 +1,6 @@
 #include "logging.h"
 
+#if 0
 #include <spdlog/spdlog.h>
 
 #if (SPDLOG_VER_MAJOR < 1)
@@ -15,18 +16,20 @@ using basic_file_sink_st = simple_file_sink_st;
 #endif
 
 #include <spdlog/sinks/stdout_sinks.h>
+#endif
 
 #include <iostream>
 
 using namespace ouster::sensor::impl;
 
-const std::string Logger::logger_name{"ouster::sensor"};
+//const std::string Logger::logger_name{"ouster::sensor"};
 
 Logger& Logger::instance() {
     static Logger logger_singleton;
     return logger_singleton;
 }
 
+#if 0
 spdlog::logger& Logger::get_logger() { return *logger_; }
 
 Logger::Logger()
@@ -95,9 +98,11 @@ bool Logger::configure_file_sink(const std::string& log_level,
 
     return true;
 }
+#endif
 
 namespace ouster {
 namespace sensor {
-spdlog::logger& logger() { return Logger::instance().get_logger(); }
+//spdlog::logger& logger() { return Logger::instance().get_logger(); }
+impl::Logger& logger() { return Logger::instance(); }
 }  // namespace sensor
 }  // namespace ouster
