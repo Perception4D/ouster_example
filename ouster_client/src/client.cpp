@@ -30,7 +30,7 @@
 
 using namespace std::chrono_literals;
 namespace chrono = std::chrono;
-using ouster::sensor::impl::Logger;
+//using ouster::sensor::impl::Logger;
 using ouster::sensor::util::SensorHttp;
 
 namespace ouster {
@@ -414,12 +414,12 @@ std::string get_metadata(client& cli, int timeout_sec, bool legacy_format) {
 
 bool init_logger(const std::string& log_level, const std::string& log_file_path,
                  bool rotating, int max_size_in_bytes, int max_files) {
-    if (log_file_path.empty()) {
-        return Logger::instance().configure_stdout_sink(log_level);
-    } else {
-        return Logger::instance().configure_file_sink(
-            log_level, log_file_path, rotating, max_size_in_bytes, max_files);
-    }
+    // if (log_file_path.empty()) {
+    //     return Logger::instance().configure_stdout_sink(log_level);
+    // } else {
+    //     return Logger::instance().configure_file_sink(
+    //         log_level, log_file_path, rotating, max_size_in_bytes, max_files);
+    // }
 }
 
 std::shared_ptr<client> init_client(const std::string& hostname, int lidar_port,
